@@ -1,5 +1,6 @@
 <div class = "bottom-tab">
-    <a href= "{{ route('home') }}" class="tab-link">Home</a>
+    <a href= "{{ route('home') }}" class="tab-link">🏠<br>Home</a>
+    <a href="{{ route('explore') }}" class="tab-link">🔍<br>Explore</a>
     
 </div>
 

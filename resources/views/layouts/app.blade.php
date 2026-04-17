@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body {
+            padding-bottom: 100px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -76,7 +81,9 @@
         </nav>
 
         <main class="py-4">
+            <x-header />
             @yield('content')
+            <x-bottom-tab />
         </main>
     </div>
 </body>
