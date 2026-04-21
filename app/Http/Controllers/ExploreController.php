@@ -11,15 +11,15 @@ class ExploreController extends Controller
     public function index(Request $request)
     {
         $sports = Sport::all();
-        $query = Court::query();
 
-        if($request->filled('search')){
-            $query->where('name', 'like','%' . $request->search . '%')
-                  ->orWhere('location', 'like', '%' . $request->search . '%');
-        }
+        return view('explore.index', compact('sports'));
+    }
 
-        $courts = $query->get();
+    public function bySport($id)
+    {
+        $sport = Sport::findOrFail($id);
+        $courts = Court::where('sport_id', $id)->get();
 
-        return view('explore.index', compact('courts', 'sports'));
+        return view('explore.sport-results', compact('sport', 'courts'));
     }
 }
