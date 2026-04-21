@@ -2,20 +2,18 @@
     <nav class="nav-bar">
 
         <!-- Logo -->
-        <!-- <div class="logo-container">
+        <div class="logo-container">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
-        </div> -->
+        </div>
 
         <!-- Navigation -->
         <div class="nav-links">
             @guest
-                <a href="{{ route('login') }}" class="login-button">Login</a>
                 <a href="{{ route('register') }}" class="signup-button">Sign Up</a>
+                <a href="{{ route('login') }}" class="login-button">Login</a>
             @endguest
 
             @auth
-                <span class="welcome-text">Welcome, {{ Auth::user()->name }}!</span>
-
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="logout-button">Logout</button>
@@ -33,9 +31,9 @@
     }
 
     .main-header {
-        background-color: #9ccfff;
+        background-color: #ffffff;
         padding: 15px 30px; 
-        height: 50px;
+        height: 70px;
     }
 
     .nav-bar {
@@ -44,30 +42,36 @@
         align-items: center;
     }
 
-    /* .logo-container {
+    .logo-container {
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
     .logo {
-        height: 50px;
+        height: 70px;
         width: auto;
         object-fit: contain;
-    } */
-
-    .login-button {
-        padding: 8px 16px;
-        background-color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
     }
 
     .signup-button {
         padding: 8px 16px;
-        background-color: #22c55e;
+        background-color: #ffffff;
+        color: #0b052b;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-right: 10px;
+    }
+
+    .signup-button:hover {
+        background-color: #e1e5fc;
+    }
+
+    .login-button {
+        padding: 8px 16px;
+        background-color: #2a5593;
         color: white;
         border: none;
         border-radius: 5px;
@@ -75,18 +79,9 @@
         transition: background-color 0.3s ease;
     }
 
-    .signup-button:hover {
-        background-color: #16a34a;
-    }
-
-    .welcome-text {
-        color: white;
-        font-weight: bold;
-    }
-
     .logout-button {
         background-color: transparent;
-        color: white;
+        color: #0b052b;
         border: none;
         cursor: pointer;
         padding: 8px 16px;

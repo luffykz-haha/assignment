@@ -1,182 +1,168 @@
 <footer id="footer">
     <div id="footer-grid">
-            <!-- About us -->
-            <div id="about">
-                <a href="home.php"><img src="logo.png" alt="Crafty logo"></a>
-                <p>Crafty is your online store for quality yarns, fabrics, art supplies, and more — everything you need to bring your creative ideas to life.</p>
-                <!-- social media link -->
-                <a href="https://www.facebook.com/crafty" class="fa fa-facebook"></a>
-                <a href="https://www.instagram.com/crafty" class="fa fa-instagram"></a>
-                <a href="https://www.pinterest.com/crafty" class="fa fa-pinterest"></a>
+        <!-- About us -->
+        <div id="about">
+            <img src="{{ asset('images/logo.png') }}" alt="CourtBook Logo">
+            <p>CourtBook is your online platform for booking sports courts and facilities. Everything you need to stay active and play your favorite sports.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/courtbook" class="fa fa-facebook" aria-label="Facebook"></a>
+                <a href="https://www.instagram.com/courtbook" class="fa fa-instagram" aria-label="Instagram"></a>
+                <a href="https://www.pinterest.com/courtbook" class="fa fa-pinterest" aria-label="Pinterest"></a>
             </div>
-
-            <!-- Product link -->
-            <div id="product">
-                <ul>
-                    <h2>Product</h2>
-                    <li><a href = "itemListing.php?category=1">Yarn</a> </li>
-                    <li><a href = "itemListing.php?category=2">Fabric</a> </li>
-                    <li><a href = "itemListing.php?category=3">Art Supplies</a> </li>
-                    <li><a href = "itemListing.php?category=4">Needlework Tools</a> </li>
-                    <li><a href = "itemListing.php?category=5">Jewellery</a> </li>
-                    <li><a href = "itemListing.php?category=6">Stationery</a> </li>
-                </ul>
-                
-            </div>
-
-            <!-- Contact us link -->
-            <div id="contact">
-                <h2>Contact Us</h2><br>
-                <a  class="link" href="contact.php"><h4>Enquiry Form</h4></a>
-                <a  class="link" href="mailto:crafty@gmail.com"><h4>Email</h4>crafty@gmail.com </a>
-                <a  class="link" href="tel:+6012-3456789"><h4>WhatsApp Us</h4>+6012-3456789 </a>
-
-                <h4>Address</h4>
-                <p>Lot 55, Jalan Sg Long 1/4,</p>
-                <p>Bandar Sungai Long, </p>
-                <p> 43000 Selangor</p>
-
-                <h4>Operated Hours</h4>
-                <p>Monday-Friday: 9am to 6pm</p>
-                <p>Saturday     : 10am to 2pm</p>
-
-            </div>
-
-            <!-- Subscribe form -->
-            <div id="subscribe">
-                <h2>Subscribe to our newsletter</h2>
-                <p> to stay up to date on all the latest news and offers from us.</p>
-                <form id="subForm" onsubmit="return validateForm()">
-                    <input type="text" id="email" name="email" placeholder="Enter your email address" >
-                    <div id="emailError" class="error"></div>
-                    <br>
-                    <button id="submit">Subscribe</button>
-                </form>
-            </div>
-
         </div>
 
-        <div id="copyright">
-            <p>&copy; 2025 Crafty Sdn. Bhd. All rights reserved.</p>
+        <!-- Contact us -->
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <a class="link" href="mailto:courtbook@gmail.com">courtbook@gmail.com</a>
+            <a class="link" href="tel:+6012-3456789">+6012-3456789</a>
+
+            <h4>Address</h4>
+            <p>Lot 55, Jalan Sg Long 1/4, Bandar Sungai Long, 43000 Selangor</p>
+
+            <h4>Operating Hours</h4>
+            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+            <p>Sat: 10:00 AM - 2:00 PM</p>
         </div>
+
+        <!-- Subscribe form -->
+        <div id="subscribe">
+            <h2>Subscribe to our newsletter</h2>
+            <p>Stay up to date on all the latest news and events from us.</p>
+            <form id="subForm" onsubmit="return validateForm()">
+                <input type="email" id="email" name="email" placeholder="Enter your email address">
+                <div id="emailError" class="error"></div>
+                <button id="submit" type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="copyright">
+        <p>&copy; 2026 CourtBook Sdn. Bhd. All rights reserved.</p>
     </div>
 </footer>
 
 <style>
-    /* Set the background for the footer */
-    #footer{
-        position:static;
-        left:60px ;
-        bottom: 0px;
-        width: auto;
-        background-color:#C0F7B5 ;
-        padding-left: 65px;
+    #footer {
+        margin-top: 48px;
+        border-top: 3px solid #2a5593;
+        background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
     }
 
-    /* 4 column inline */
-    #footer-grid{
+    #footer-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 24px;
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr 1fr 1.5fr; /* 4 column */
-        row-gap: 60px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 50px;
+        text-align: left;
+        color: #1f2937;
     }
 
-    /* Style for logo */
-    #footer img{
-        padding-top: 15px;
-        height: 150px;
+    #footer h2,
+    #footer h4 {
+        margin: 0 0 10px;
+        color: #2a5593;
+    }
+
+    #footer p {
+        margin: 0 0 10px;
+        line-height: 1.55;
+    }
+
+    #about p,
+    #subscribe p {
+        text-align: justify;
+    }
+
+    #footer img {
+        height: 72px;
         width: auto;
+        margin-bottom: 12px;
     }
 
-    /* Style for social media icon */
-    #footer .fa-instagram {
-    background: #125688;
-    color: white;
-    }
-
-    #footer .fa-pinterest {
-    background: #cb2027;
-    color: white;
-    }
-
-    #footer .fa-twitter {
-    background: #55ACEE;
-    color: white;
-    }
-
-    #footer .fa-facebook {
-    background: #3B5998;
-    color: white;
+    .social-links {
+        margin-top: 10px;
     }
 
     #footer .fa {
-    padding: 12px;
-    font-size: 20px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    }
-
-    /* Style for product link */
-    #footer #product ul li{
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        border-radius: 9999px;
+        margin: 0 4px;
+        color: #ffffff;
         text-decoration: none;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        list-style:none;
+        transition: transform 0.2s ease;
     }
 
-    #footer a {
+    #footer .fa:hover {
+        transform: translateY(-2px);
+    }
+
+    #footer .fa-facebook {
+        background: #2a5593;
+    }
+
+    #footer .fa-instagram {
+        background: #16a34a;
+    }
+
+    #footer .fa-pinterest {
+        background: #ef4444;
+    }
+
+    #footer .link {
+        display: block;
+        color: #1f2937;
         text-decoration: none;
-        color: black;
+        margin-bottom: 8px;
     }
 
-    #footer h2 ,h4{
-        color: darkgreen;
+    #footer .link:hover {
+        color: #2a5593;
     }
 
-    /* Style for contact link */
-    #footer #contact {
-        top: 0;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        line-height: 10px;
-        padding-left: 0;
+    #footer #subForm {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
-    /* Style for subscribe form */
-    #footer #subscribe input{
-        width: 300px;       
-        max-width: 500px;     
+    #footer #subscribe input {
+        width: 100%;
+        max-width: 320px;
         padding: 12px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        background-color: lightcyan;
+        border-radius: 8px;
+        border: 1px solid #cbd5e1;
+        background-color: #ffffff;
     }
 
     #footer #subscribe button {
-        padding: 10px 20px;
-        background-color: #0B6623; 
-        color: white;
+        padding: 10px 22px;
+        background-color: #2a5593;
+        color: #ffffff;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
+        transition: background-color 0.2s ease;
     }
 
     #footer #subscribe button:hover {
-    background-color:#0f8b30; 
+        background-color: #2a5593;
     }
 
-    /* Style for copyright bar */
-    #copyright{
-        display: block;
-        width: auto;
-        height: 60px;
-        bottom: 0;
-        background-color: rgb(4, 99, 4);
-        color: aliceblue;
-        font-size: 20px;
+    #copyright {
+        background-color: #2a5593;
+        color: #eaf2ff;
         text-align: center;
-        align-content: center;
-        padding: 5px;
+        padding: 14px 12px;
+    }
+
+    #copyright p {
+        margin: 0;
     }
 </style>
