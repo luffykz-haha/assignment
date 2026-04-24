@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ExploreController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,9 @@ use App\Http\Controllers\ExploreController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/home', '/')->name('home');
 Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
 Route::get('/explore/sport/{id}', [ExploreController::class, 'bySport'])->name('explore.sport');

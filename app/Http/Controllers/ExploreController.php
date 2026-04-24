@@ -10,9 +10,21 @@ class ExploreController extends Controller
 {
     public function index(Request $request)
     {
-        $sports = Sport::all();
+        $sports = Sport::orderBy('name')->get();
+        $search = trim((string) $request->query('search', ''));
+        $matchingCourts = collect();
 
-        return view('explore.index', compact('sports'));
+        if ($search !== '') {
+            $matchingCourts = Court::with('sport')
+                ->where('location', 'like', '%' . $search . '%')
+                ->orWhereHas('sport', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->orderBy('name')
+                ->get();
+        }
+
+        return view('explore.index', compact('sports', 'search', 'matchingCourts'));
     }
 
     public function bySport($id)

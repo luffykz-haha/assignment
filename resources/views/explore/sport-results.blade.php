@@ -7,15 +7,8 @@
         'badminton'    => '🏸',
         'tennis'       => '🎾',
         'basketball'   => '🏀',
-        'football'     => '⚽',
-        'soccer'       => '⚽',
         'volleyball'   => '🏐',
-        'squash'       => '🎯',
-        'ping pong'    => '🏓',
-        'table tennis' => '🏓',
-        'swimming'     => '🏊',
-        'cricket'      => '🏏',
-        'hockey'       => '🏒',
+        'pickleball'    => '🏟️',
     ];
     $emoji = $sportEmojis[strtolower($sport->name)] ?? '🏟️';
 @endphp
@@ -36,10 +29,24 @@
 @else
     <div class="courts-grid">
         @foreach($courts as $court)
+            @php
+                $detailsUrl = route('explore.sport', $sport->id);
+                $bookNowUrl = auth()->check() ? $detailsUrl : route('login');
+            @endphp
             <div class="court-card">
-                <div class="court-card-content">
+                <a href="{{ route('explore') }}" class="card-link-overlay" aria-label="Open {{ $court->name }}"></a>
+                <div class="court-card-header">
                     <h3>{{ $court->name }}</h3>
-                    <p class="court-location">📍 {{ $court->location }}</p>
+                    <span class="sport-badge">
+                        {{ $emoji }} {{ $sport->name }}
+                    </span>
+                </div>
+                <div class="court-card-body">
+                    <p class="location">📍 {{ $court->location }}</p>
+                </div>
+                <div class="court-card-footer">
+                    <a href="{{ route('explore') }}" class="view-btn">View Details</a>
+                    <a href="{{ route('explore') }}" class="book-btn">Book Now</a>
                 </div>
             </div>
         @endforeach
@@ -51,6 +58,8 @@
 <style>
     .results-header {
         margin-bottom: 30px;
+        padding: 0 30px;
+        max-width: 1200px;
     }
 
     .back-btn {
@@ -86,40 +95,118 @@
     }
 
     .courts-grid {
+        padding: 0 30px;
+        max-width: 1200px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-        margin-top: 10px;
+        gap: 24px;
+        margin-bottom: 40px;
     }
 
     .court-card {
         background: white;
-        border: 1px solid #e2e8f0;
         border-radius: 12px;
         overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid #d9dedb;
+    }
+
+    .card-link-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
     }
 
     .court-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
-    .court-card-content {
+    .court-card-header {
         padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
     }
 
     .court-card h3 {
-        margin: 0 0 10px 0;
+        margin: 0;
         font-size: 18px;
         color: #1e293b;
+        flex: 1;
     }
 
-    .court-location {
+    .sport-badge {
+        background-color: #f0f4ff;
+        color: #2a5593;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .court-card-body {
+        padding: 16px 20px;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+    }
+
+    .location {
         margin: 0;
         color: #64748b;
         font-size: 14px;
+    }
+
+    .court-card-footer {
+        padding: 16px 20px;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .view-btn {
+        color: #2a5593;
+        background-color: white;
+        padding: 8px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+        border: 1px solid #2a5593;
+    }
+
+    .view-btn:hover {
+        color: #1d4ed8;
+        background-color: #dbeafe;
+        text-decoration: none;
+    }
+
+    .book-btn {
+        background-color: #2a5593;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .book-btn:hover {
+        background-color: #1d4ed8;
     }
 
     .empty-state {

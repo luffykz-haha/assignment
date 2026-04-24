@@ -1,9 +1,9 @@
 <header class="main-header">
-    <nav class="nav-bar">
-
         <!-- Logo -->
         <div class="logo-container">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            </a>
         </div>
 
         <!-- Navigation -->
@@ -20,8 +20,6 @@
                 </form>
             @endauth
         </div>
-
-    </nav>
 </header>
 
 <!-- Styling -->
@@ -34,12 +32,10 @@
         background-color: #ffffff;
         padding: 15px 30px; 
         height: 70px;
-    }
-
-    .nav-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid #d9dedb;
     }
 
     .logo-container {
